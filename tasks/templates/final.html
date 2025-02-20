@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            background-color: #000;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .terminal-window {
+            width: 90%;
+            max-width: 800px;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background-color: #1e1e1e;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .terminal-header .title {
+            color: #00ff00;
+        }
+
+        .close-button {
+            width: 15px;
+            height: 15px;
+            background-color: #ff5c5c;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .terminal {
+            background-color: #000;
+            color: #00ff00;
+            padding: 20px;
+            height: 180px;
+            overflow-y: auto;
+            font-size: 20px;
+        }
+
+        .line {
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+
+<div class="terminal-window">
+    <div class="terminal-header">
+        <div class="title"></div>
+        <div class="close-button" onclick="closeTerminal()"></div>
+    </div>
+    <div class="terminal" id="terminal">
+        <div class="line" id="output"></div>
+    </div>
+</div>
+
+<script>
+    const message = "С:\\23February> Поздравляем с успешным прохождением заданий!\nС:\\23February> Теперь ты точно доказал, что ты настоящий КБшник!\nС:\\23February> Защищай Отечество и Компьютерную безопасность!\nС:\\23February> Поздравляем с 23 февраля!";
+    const outputElement = document.getElementById('output');
+    let index = 0;
+
+    function typeMessage() {
+        if (index < message.length) {
+            outputElement.textContent += message.charAt(index);
+            index++;
+            setTimeout(typeMessage, 20);
+        } else {
+            outputElement.textContent += "\n";
+        }
+    }
+
+    function closeTerminal() {
+        document.querySelector('.terminal-window').style.display = 'none';
+    }
+
+    typeMessage();
+</script>
+
+</body>
+</html>

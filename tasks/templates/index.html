@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .registration-form {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        input[type="text"], input[type="password"] {
+            width: 97%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        input[type="submit"] {
+            background-color: #00cc00;
+            color: black;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #00ff00;
+        }
+    </style>
+</head>
+<body>
+
+<div class="registration-form">
+    <h2>Вход</h2>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    <form action="#" method="post">
+        {% csrf_token %}
+        <label for="username">Логин:</label>
+        <!--    cicada_2302    -->
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Пароль:</label>
+        <!--     love_ctf       -->
+        <input type="password" id="password" name="password" required>
+
+        <input type="submit" value="Войти">
+    </form>
+</div>
+
+</body>
+</html>

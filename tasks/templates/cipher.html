@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="window">
+    <div class="title-bar">
+        <div class="title">🏛️🤴</div>
+        <div class="buttons">
+            <button class="close">X</button>
+        </div>
+    </div>
+    <div class="content">
+        <pre>
+            tbii alkb, klt bkqbo fq fk qeb cfbia: dllllagly
+        </pre>
+    </div>
+</div>
+
+
+<form method="post">
+    {% csrf_token %}
+    <div class="input-container">
+        <input type="text" name="flag" class="input-field" placeholder="" required>
+        <button type="submit" class="submit-button"> ✔ </button>
+
+    </div>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #000;
+        color: #00ff00;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    .audio-container {
+        text-align: center;
+        margin-top: 220px;
+    }
+
+    audio {
+        width: 600px;
+        border: 2px solid #00ff00;
+        background-color: #000;
+        outline: none;
+    }
+
+    audio::-webkit-media-controls-panel {
+        background-color: #000;
+        border: none;
+    }
+
+    audio::-webkit-media-controls-play-button,
+    audio::-webkit-media-controls-volume-slider,
+    audio::-webkit-media-controls-mute-button {
+        background-color: #00ff00;
+    }
+
+    audio::-webkit-media-controls-volume-slider {
+        width: 100px;
+    }
+
+    audio::-webkit-media-controls-volume-slider::-webkit-slider-thumb {
+        background-color: #00ff00;
+        border-radius: 5px;
+        height: 10px;
+        width: 10px;
+    }
+
+    audio::-webkit-media-controls-volume-slider::-webkit-slider-runnable-track {
+        background-color: #00ff00;
+    }
+
+    audio::-webkit-media-controls-current-time-display,
+    audio::-webkit-media-controls-time-remaining-display {
+        color: #00ff00;
+    }
+
+    .download-icon {
+        display: inline-block;
+        margin-top: 20px;
+        color: #00ff00;
+        font-size: 24px;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .download-icon:hover {
+        color: #fff;
+    }
+</style>
+
+<div class="audio-container">
+    <audio controls>
+        <source src="{% static 'audio/pilots.wav' %}" type="audio/wav">
+        Ваш браузер не поддерживает элемент audio.
+    </audio>
+
+    <a class="download-icon" href="{% static 'audio/pilots.wav' %}" download>
+        <i class="fas fa-download"></i>
+    </a>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <div class="input-container">
+        <input type="text" name="flag" class="input-field" placeholder="" required>
+        <button type="submit" class="submit-button">✔</button>
+
+    </div>
+</form>
+
+{% endblock %}
